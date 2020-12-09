@@ -4,13 +4,15 @@
 Plugin Name: Better jQuery Migrate Helper
 Plugin URI: http://www.wpadami.com/
 Description: Revert jQuery to 1.12.4-wp and jQuery Migrate to 1.4.1-wp
-Version: 1.0
+Version: 1.1.0
 Author: kaisercrazy
 Author URI: http://www.wpadami.com
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
+// Define Concatenate_scripts here
+define('CONCATENATE_SCRIPTS', false);
 
 class BetterjQueryMigrateHelper
 {
@@ -117,7 +119,6 @@ class BetterjQueryMigrateHelper
     {
         $this->better_jquery_migrate_helper_options = get_option('better_jquery_migrate_helper_options_name');
         if ($this->better_jquery_migrate_helper_options['active_for_admin_area'] && $this->better_jquery_migrate_helper_options['active_for_frontend_area']) {
-            define('CONCATENATE_SCRIPTS', false);
             wp_deregister_script('jquery-core');
             wp_deregister_script('jquery-migrate');
             wp_register_script('jquery-core', plugin_dir_url(__FILE__)."js/jquery-1.12.4-wp.js", array(), null);
